@@ -1,467 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ritwik Rana | Portfolio</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+<style>
+html { scroll-behavior: smooth; }
+
+body {
+    /* Save your background image as images/bg.jpg. If it's missing, the dot grid shows instead. */
+    background-color: white;
+    background-image: url('images/bg.jpg'), radial-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+    background-size: cover, 24px 24px;
+    background-position: center, center;
+    background-repeat: no-repeat, repeat;
+    background-attachment: fixed, scroll;
+    color: #0f172a;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    letter-spacing: -0.5px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.interactive-bg-title {
+    position: absolute;
+    top: 20vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: Impact, "Arial Black", -apple-system, sans-serif;
+    font-size: 8vw;
+    font-weight: 900;
+    color: #cdb5e1;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 1px 1px 0 #ffffff, 2px 2px 0 rgba(0,0,0,0.15), 3px 3px 0 rgba(0,0,0,0.1), 4px 4px 12px rgba(0,0,0,0.15);
+    white-space: nowrap;
+    user-select: none;
+    z-index: -1;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(192, 192, 192, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.logo-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.5px;
+}
+
+.nav-links { display: flex; list-style: none; gap: 48px; }
+
+.nav-links a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.nav-links a:hover { color: #6d28d9; }
+
+a:focus-visible, input:focus-visible, button:focus-visible { outline: 2px solid #6d28d9; outline-offset: 3px; }
+
+.intro-hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.intro-center-box h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 8px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: drop-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.intro-center-box p {
+    font-size: 1.5rem;
+    color: #94a3b8;
+    font-weight: 400;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: drop-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+}
+
+@keyframes drop-in { to { opacity: 1; transform: translateY(0); } }
+
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+section { padding: 120px 0; }
+
+.about-split-section { perspective: 1200px; }
+
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.left-brand-identity { position: sticky; top: 140px; }
+
+.text-logo { font-size: 3rem; font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 12px; }
+
+.brand-subtext { font-size: 1.25rem; color: #94a3b8; font-weight: 500; }
+
+.right-interactive-deck { transform-style: preserve-3d; }
+
+.flipping-card-anchor {
+    background-color: #0b0c10;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    padding: 48px;
+    transform: rotateX(25deg) rotateY(-15deg) translateY(40px);
+    opacity: 0.85;
+    transform-origin: top center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-split-section:hover .flipping-card-anchor {
+    transform: rotateX(0) rotateY(0) translateY(0);
+    opacity: 1;
+    border-color: rgba(0, 242, 254, 0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 242, 254, 0.05);
+}
+
+.card-inner-mesh h3 { font-size: 2rem; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.5px; color: grey; }
+
+.card-inner-mesh p { color: #94a3b8; font-size: 1.1rem; line-height: 1.7; }
+
+.section-header { margin-bottom: 60px; }
+
+.section-header h2 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+
+.section-header p { color: #94a3b8; font-size: 1.1rem; }
+
+.bento-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+.project-card {
+    background-color: #0b0c10;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    padding: 40px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: white;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 242, 254, 0.05);
+}
+
+.project-card h3 { font-size: 1.75rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; color: white; }
+
+.project-card p { color: #94a3b8; font-size: 1rem; }
+
+.project-footer {
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+    transition: color 0.2s ease;
+}
+
+.project-card:hover .project-footer { color: #ffffff; }
+
+.contact-layout { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; align-items: start; }
+
+.contact-form {
+    background-color: #0b0c10;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 40px;
+    border-radius: 24px;
+}
+
+.contact-form label { display: block; margin: 20px 0 8px; font-weight: 500; font-size: 0.95rem; color: white; }
+
+.contact-form label:first-of-type { margin-top: 0; }
+
+.contact-form input {
+    width: 100%;
+    padding: 14px 18px;
+    background-color: #111216;
+    border: 1px solid grey;
+    border-radius: 10px;
+    color: #f8fafc;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.contact-form input:focus { border-color: rgba(0, 242, 254, 0.5); }
+
+.btn-submit {
+    display: inline-block;
+    width: 100%;
+    padding: 16px;
+    background-color: #ffffff;
+    color: #111216;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 32px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-submit:hover { background-color: #e2e8f0; transform: translateY(-2px); }
+
+footer {
+    padding: 60px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background-color: grey;
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.footer-layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 16px;
+    font-size: 26px;
+}
+
+.footer-layout a { color: #ffffff; text-decoration: none; }
+
+.footer-layout a:hover { text-decoration: underline; }
+
+.skills-grid-row { display: grid; grid-template-columns: 1fr; gap: 24px; }
+
+.skills-category-card {
+    background-color: grey;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills-category-card:hover {
+    border-color: rgba(0, 242, 254, 0.5);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08), 0 0 20px rgba(0, 242, 254, 0.1);
+}
+
+.skills-category-card h4 { font-size: 1.4rem; font-weight: 800; margin-bottom: 24px; color: #1e1b4b; }
+
+.skills-pills-list { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; }
+
+.skills-pills-list li {
+    background-color: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #475569;
+}
+
+.learning-accent li {
+    border-color: rgba(0, 242, 254, 0.3);
+    background-color: rgba(0, 242, 254, 0.02);
+    color: #00b4d8;
+}
+
+/* Touch screens have no hover, so show the About card flat */
+@media (hover: none) {
+    .flipping-card-anchor { transform: none; opacity: 1; }
+}
+
+/* Tablets and phones */
+@media (max-width: 768px) {
+    section { padding: 72px 0; }
+    nav { padding: 16px; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 0.9rem; letter-spacing: 0; }
+    .interactive-bg-title { font-size: 12vw; }
+    .intro-center-box h1 { font-size: 2.75rem; letter-spacing: -1px; }
+    .split-layout, .bento-grid, .contact-layout { grid-template-columns: 1fr; gap: 32px; }
+    .left-brand-identity { position: static; }
+    .text-logo { font-size: 2.25rem; }
+    .flipping-card-anchor, .contact-form, .project-card, .skills-category-card { padding: 28px; }
+    .section-header { margin-bottom: 32px; }
+    .section-header h2 { font-size: 2rem; }
+    .footer-layout { font-size: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
 </head>
 <body>
 
-
-
-
-
-<style>
-  
-        
-
-html {
-            scroll-behavior: smooth;
-        }
-
-        
-        body {
-            background-color: white;
-            background-image: radial-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px);
-            color: #0f172a;
-            background-size: 24px 24px;
-            background-position: center;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-            letter-spacing: -0.5px;
-            background-image: url('https://img.magnific.com/premium-photo/modern-high-tech-background-featuring-futuristic-elements-clean-white-canvas_251376-24190.jpg?semt=ais_hybrid&w=740&q=80');
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            image-rendering: auto;
-        }
-
-       
-        .interactive-bg-title {
-            position: absolute;
-            top: 20vh;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family:Impact, "Arial Black", -apple-system, sans-serif;
-            font-size: 8vw;
-            font-weight: 900;
-            color: #cdb5e1;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-             text-shadow: 
-        1px 1px 0px #ffffff,
-        2px 2px 0px rgba(0, 0, 0, 0.15),
-        3px 3px 0px rgba(0, 0, 0, 0.1),
-        4px 4px 12px rgba(0, 0, 0, 0.15);
-            white-space: nowrap;
-            user-select: none;
-            z-index: -1;
-            
-        }
-
-        
-        
-
-        header {
-            position: sticky;
-            top: 0;
-            background-color: silver;
-            backdrop-filter: blur(12px);
-            z-index: 100;
-            border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px;
-        }
-
-        .logo-circle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border: 2px solid #ffffff;
-            border-radius: 50%;
-            font-weight: 800;
-            font-size: 1.15rem;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 48px;
-            color: black;
-        }
-
-        .nav-links a {
-            color: black;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            transition: color 0.2s ease;
-            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-        }
-
-        .nav-links a:hover {
-            color: #ffffff;
-        }
-
-        .intro-hero {
-            min-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .intro-center-box h1 {
-            font-size: 4.5rem;
-            font-weight: 800;
-            letter-spacing: -2px;
-            margin-bottom: 8px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: drop-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .intro-center-box p {
-            font-size: 1.5rem;
-            color: #94a3b8;
-            font-weight: 400;
-            letter-spacing: 1px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: rise-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-        }
-
-        @keyframes drop-in {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes rise-up {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        section {
-            padding: 120px 0;
-        }
-
-        .about-split-section {
-            perspective: 1200px;
-        }
-
-        .split-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: start;
-        }
-
-        .left-brand-identity {
-            position: sticky;
-            top: 140px;
-        }
-
-        .text-logo {
-            font-size: 3rem;
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            margin-bottom: 12px;
-        }
-
-        .brand-subtext {
-            font-size: 1.25rem;
-            color: #94a3b8;
-            font-weight: 500;
-        }
-
-        .right-interactive-deck {
-            transform-style: preserve-3d;
-        }
-
-        /* Subtle, Clean Obsidian Card with 3D Flip Reveal */
-        .flipping-card-anchor {
-            background-color: #0b0c10;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px;
-            padding: 48px;
-            transform: rotateX(25deg) rotateY(-15deg) translateY(40px);
-            opacity: 0.85;
-            transform-origin: top center;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-       
-        .about-split-section:hover .flipping-card-anchor {
-            transform: rotateX(0deg) rotateY(0deg) translateY(0);
-            opacity: 1;
-            border-color: rgba(0, 242, 254, 0.25);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 242, 254, 0.05);
-        }
-
-        .card-inner-mesh h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
-            color:grey
-        }
-
-        .card-inner-mesh p {
-            color: #94a3b8;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        .section-header {
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 12px;
-        }
-
-        .section-header p {
-            color: #94a3b8;
-            font-size: 1.1rem;
-        }
-
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        
-        .project-card {
-            background-color: #0b0c10;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px;
-            padding: 40px;
-            min-height: 320px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .project-card:hover {
-            transform: translateY(-6px);
-            border-color: white;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 242, 254, 0.05);
-        }
-
-        .project-card h3 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-            color: white
-        }
-
-        .project-card p {
-            color: #94a3b8;
-            font-size: 1rem;
-        }
-
-        .project-footer {
-            color: #94a3b8;
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 40px;
-            transition: color 0.2s ease;
-        }
-
-        .project-card:hover .project-footer {
-            color: #ffffff;
-        }
-
-        .contact-layout {
-            display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        .contact-form {
-            background-color: #0b0c10;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 40px;
-            border-radius: 24px;
-        }
-
-        .contact-form label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            margin-top: 20px;
-            color: white
-        }
-
-        .contact-form label:first-of-type {
-            margin-top: 0;
-        }
-
-        .contact-form input {
-            width: 100%;
-            padding: 14px 18px;
-            background-color: #111216;
-            border: 1px solid grey;
-            border-radius: 10px;
-            color: #f8fafc;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.2s ease;
-            align-items: centre;
-        }
-
-        .contact-form input:focus {
-            border-color: rgba(0, 242, 254, 0.5);
-        }
-
-        .btn-submit {
-            display: inline-block;
-            width: 100%;
-            padding: 16px;
-            background-color: #ffffff;
-            color: #111216;
-            font-weight: 600;
-            border-radius: 10px;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-top: 32px;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-        }
-
-        .btn-submit:hover {
-            background-color: #e2e8f0;
-            transform: translateY(-2px);
-        }
-
-        footer {
-            padding: 60px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            background-color: grey;
-            color: #94a3b8;
-            font-size: 0.95rem;
-        }
-
-        .footer-layout {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            justify-content: space-evenly;
-            font-size: 26px;
-
-        }
-               
-        .skills-grid-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .skills-category-card {
-            background-color: grey;
-            border: 1px solid rgba(15, 23, 42, 0.08);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .skills-category-card:hover {
-            border-color: rgba(0, 242, 254, 0.5);
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08), 0 0 20px rgba(0, 242, 254, 0.1);
-        }
-
-        .skills-category-card h4 {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 24px;
-            color: #1e1b4b; 
-        }
-
-        .skills-pills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            list-style: none;
-        }
-
-        .skills-pills-list li {
-            background-color: #f8fafc;
-            border: 1px solid rgba(15, 23, 42, 0.06);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #475569;
-        }
-
-       
-        .learning-accent li {
-            border-color: rgba(0, 242, 254, 0.3);
-            background-color: rgba(0, 242, 254, 0.02);
-            color: #00b4d8;
-        }
-        .skills-grid-row{
-            grid-template-columns: 1fr;
-        }
-
-
-        </style>
-            
-
-
-
-
-    
-<div class="interactive-bg-title"> Software Engineer </div>
-
+<div class="interactive-bg-title">Software Engineer</div>
 
 <header>
     <nav>
-        
         <div class="logo-circle">RR</div>
-        
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -471,10 +354,8 @@ html {
     </nav>
 </header>
 
-
 <main class="page-viewport">
 
-    
     <section id="intro-hero" class="intro-hero">
         <div class="intro-center-box">
             <h1>Hi, I'm Ritwik</h1>
@@ -482,17 +363,14 @@ html {
         </div>
     </section>
 
-    
     <section id="about" class="about-split-section">
         <div class="container split-layout">
-            
-            
-            
+
+            <div class="left-brand-identity">
                 <div class="text-logo">RITWIK RANA</div>
-                <div class="brand-subtext">Software Developer & Athlete</div>
+                <div class="brand-subtext">Software Developer &amp; Athlete</div>
             </div>
 
-            
             <div class="right-interactive-deck">
                 <div class="flipping-card-anchor">
                     <div class="card-inner-mesh">
@@ -505,42 +383,40 @@ html {
         </div>
     </section>
 
-    
     <section id="projects" class="projects">
         <div class="container">
-            
             <div class="section-header">
                 <h2>Recent Projects</h2>
                 <p>A selective presentation of digital interfaces built with clean architecture.</p>
             </div>
-            
-        
+
+            <!-- Replace each href with your real repo or live-demo link -->
             <div class="bento-grid">
-                <a href="#" class="project-card">
+                <a href="https://github.com/YOUR-USERNAME/space-explorer" target="_blank" rel="noopener noreferrer" class="project-card">
                     <div>
                         <h3>Space Explorer</h3>
                         <p>A landing page utilizing fluid breakpoints and absolute semantic structuring blocks.</p>
                     </div>
                     <div class="project-footer">View Project ↗</div>
                 </a>
-                
-                <a href="#" class="project-card">
+
+                <a href="https://github.com/YOUR-USERNAME/flexbox-playground" target="_blank" rel="noopener noreferrer" class="project-card">
                     <div>
                         <h3>Flexbox Playground</h3>
-                        <p>An interactive layout layout interface evaluating strict flex layout directions.</p>
+                        <p>An interactive layout interface evaluating strict flex layout directions.</p>
                     </div>
                     <div class="project-footer">View Project ↗</div>
                 </a>
-                
-                <a href="#" class="project-card">
+
+                <a href="https://github.com/YOUR-USERNAME/responsive-bento-grid" target="_blank" rel="noopener noreferrer" class="project-card">
                     <div>
                         <h3>Responsive Bento Grid</h3>
                         <p>A sophisticated desktop grid layout that dynamically scales to single card columns.</p>
                     </div>
                     <div class="project-footer">View Project ↗</div>
                 </a>
-                
-                <a href="#" class="project-card">
+
+                <a href="https://github.com/YOUR-USERNAME/css-motion-engine" target="_blank" rel="noopener noreferrer" class="project-card">
                     <div>
                         <h3>CSS Motion Engine</h3>
                         <p>A modular frontend workspace demonstrating hardware-accelerated transforms without scripts.</p>
@@ -550,67 +426,65 @@ html {
             </div>
         </div>
     </section>
+
     <section id="skills" class="skills-section">
         <div class="container">
             <div class="section-header">
                 <h2>Technical Arsenal</h2>
                 <p>The development tools and core technologies behind my web architectures.</p>
             </div>
-            
-        <div class="skills-grid-row">
-                    <!-- Category 1: Frontend -->
-                    <div class="skills-category-card">
-                        <h4>Frontend Development</h4>
-                        <ul class="skills-pills-list">
-                            <li>HTML5</li>
-                            <li>CSS3</li>
-                            <li>Flexbox</li>
-                            <li>CSS Grid</li>
-                            <li>Responsive Layouts</li>
-                        </ul>
-                    </div>
 
-                    <!-- Category 2: Tools -->
-                    <div class="skills-category-card">
-                        <h4>Development Tools</h4>
-                        <ul class="skills-pills-list">
-                            <li>Git</li>
-                            <li>GitHub</li>
-                            <li>VS Code</li>
-                            <li>DevTools</li>
-                        </ul>
-                    </div>
+            <div class="skills-grid-row">
+                <div class="skills-category-card">
+                    <h4>Frontend Development</h4>
+                    <ul class="skills-pills-list">
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>Flexbox</li>
+                        <li>CSS Grid</li>
+                        <li>Responsive Layouts</li>
+                    </ul>
+                </div>
 
-                    <!-- Category 3: Currently Learning -->
-                    <div class="skills-category-card">
-                        <h4>Currently Learning</h4>
-                        <ul class="skills-pills-list learning-accent">
-                            <li>JavaScript</li>
-                            <li>React.js</li>
-                            <li>Tailwind CSS</li>
-                        </ul>
-                    </div>
+                <div class="skills-category-card">
+                    <h4>Development Tools</h4>
+                    <ul class="skills-pills-list">
+                        <li>Git</li>
+                        <li>GitHub</li>
+                        <li>VS Code</li>
+                        <li>DevTools</li>
+                    </ul>
+                </div>
+
+                <div class="skills-category-card">
+                    <h4>Currently Learning</h4>
+                    <ul class="skills-pills-list learning-accent">
+                        <li>JavaScript</li>
+                        <li>React.js</li>
+                        <li>Tailwind CSS</li>
+                    </ul>
                 </div>
             </div>
-        </section>
-    
+        </div>
+    </section>
+
     <section id="connect" class="connect-section">
         <div class="container contact-layout">
             <div class="section-header">
                 <h2>Wanna connect?</h2>
                 <p>Drop your vitals here. Let's engineer something unyielding together.</p>
             </div>
-            
-            
-            <form class="contact-form">
+
+            <!-- Create a free form at formspree.io and replace YOUR_FORM_ID with its ID -->
+            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                 <label for="name">Name</label>
-                <input type="text" id="name">
+                <input type="text" id="name" name="name" autocomplete="name" required>
 
                 <label for="email">Email Address</label>
-                <input type="email" id="email">
+                <input type="email" id="email" name="email" autocomplete="email" required>
 
                 <label for="mobile">Mobile Number</label>
-                <input type="number" id="mobile">
+                <input type="tel" id="mobile" name="mobile" autocomplete="tel">
 
                 <button type="submit" class="btn-submit">Submit Details</button>
             </form>
@@ -619,20 +493,14 @@ html {
 
 </main>
 
-
 <footer>
     <div class="container">
         <div class="footer-layout">
-            
-            
-            
-            <a href="https://www.instagram.com/ritwik.x9/?hl=en" target="_blank" class="instagram-link">Instagram</a>
-            <a href="https://www.linkedin.com/in/ritwik-rana-952b41424/" target="_blank" class="linkedin-links">LinkedIn</a>
-      
+            <a href="https://www.instagram.com/ritwik.x9/?hl=en" target="_blank" rel="noopener noreferrer" class="instagram-link">Instagram</a>
+            <a href="https://www.linkedin.com/in/ritwik-rana-952b41424/" target="_blank" rel="noopener noreferrer" class="linkedin-links">LinkedIn</a>
         </div>
     </div>
 </footer>
 
-    
 </body>
 </html>
