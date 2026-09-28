@@ -1,1 +1,1 @@
-# Portfolio
+A responsive frontend portfolio showcasing clean HTML5 and advanced CSS architectures. Built entirely using VS Code and version-controlled with Git/GitHub, this project highlights layouts, CSS Grid systems, and structured web interfaces like a responsive Bento Grid and a CSS Motion Engine.
