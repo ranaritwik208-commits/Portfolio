@@ -11,7 +11,7 @@ html { scroll-behavior: smooth; }
 body {
    
     background-color: white;
-    background-image: url('images/bg.jpg'), radial-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+    background-image: url("background.jpg"), radial-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px);
     background-size: cover, 24px 24px;
     background-position: center, center;
     background-repeat: no-repeat, repeat;
@@ -205,6 +205,29 @@ section { padding: 120px 0; }
     margin-top: 40px;
     transition: color 0.2s ease;
 }
+   .image-box {
+    flex: 1;
+    max-width: 400px; 
+    text-align: center;}
+   .caption {
+    font-size: 14px;
+    margin-top: 8px;
+    color: #ccc;}
+
+   .football-text {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.6); 
+    padding: 20px;
+    border-radius: 8px;}
+
+   .football-text strong {
+    color: #e60000;
+   }
+   
+   
 
 .project-card:hover .project-footer { color: #ffffff; }
 
@@ -345,7 +368,23 @@ footer {
   border-top: 1px solid #eaeaea;
   margin-top: 40px;
 }
-
+   .football-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;}
+   .image-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 30px; 
+    margin-bottom: 25px;
+       flex-wrap: wrap;}
+   .image-box {
+    flex: 1;
+    max-width: 400px; 
+    text-align: center;
+   }
+   
 </style>
 </head>
 <body>
@@ -372,6 +411,21 @@ footer {
             <p>Welcome</p>
         </div>
     </section>
+   <section class="football">
+      <div class=photo-gallery>
+         <div class="-image-box>
+            <img src="maldini.jpg" alt="Paolo Maldini" class="portfolio-img">
+            <p class="caption">Paolo Maldini, My favourite player and captin who lead AC MILAN to its 7th UCL win at 2007</p>
+            </div>
+         <div class="image-box">
+             <img src="sansiro.jpg" alt="San Siro Stadium" class="portfolio-img">
+            <p class="caption">A Beautiful Stadium Built by AC MILAN</p>
+         </div>
+      </div>
+      <div class="football-text">
+         <p>Apart from studying, I love watching and playing football. My favourite player is <strong>Paolo Maldini</strong> and my favourite club is <strong>AC Milan</strong>.</p>
+      </div>
+   </section>
 
     <section id="about" class="about-split-section">
         <div class="container split-layout">
